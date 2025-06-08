@@ -1,0 +1,980 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Vacancy Management API",
+        "description": "API для управления вакансиями",
+        "contact": {
+            "name": "Vacancy Management Team",
+            "email": "support@vacancy.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://springdoc.org"
+        },
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8081",
+            "description": "Generated server url"
+        }
+    ],
+    "tags": [
+        {
+            "name": "Vacancy Controller",
+            "description": "API для управления вакансиями"
+        },
+        {
+            "name": "Offer Controller",
+            "description": "API для управления офферами"
+        },
+        {
+            "name": "Job Application Controller",
+            "description": "API для управления откликами на вакансии"
+        },
+        {
+            "name": "Resume Controller",
+            "description": "API для управления резюме"
+        }
+    ],
+    "paths": {
+        "/api/vacancies/{id}": {
+            "get": {
+                "tags": [
+                    "Vacancy Controller"
+                ],
+                "summary": "Получение вакансии по ID",
+                "operationId": "getVacancy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VacancyDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Vacancy Controller"
+                ],
+                "summary": "Обновление вакансии",
+                "operationId": "updateVacancy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VacancyDto"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VacancyDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Vacancy Controller"
+                ],
+                "summary": "Удаление вакансии",
+                "operationId": "deleteVacancy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/resumes/{id}": {
+            "get": {
+                "tags": [
+                    "Resume Controller"
+                ],
+                "summary": "Получение резюме по ID",
+                "operationId": "getResume",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResumeDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Resume Controller"
+                ],
+                "summary": "Обновление резюме",
+                "operationId": "updateResume",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ResumeDto"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResumeDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Resume Controller"
+                ],
+                "summary": "Удаление резюме",
+                "operationId": "deleteResume",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/offers/{id}": {
+            "get": {
+                "tags": [
+                    "Offer Controller"
+                ],
+                "summary": "Получение оффера по ID",
+                "operationId": "getOffer",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OfferDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Offer Controller"
+                ],
+                "summary": "Обновление оффера",
+                "operationId": "updateOffer",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/OfferDto"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OfferDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Offer Controller"
+                ],
+                "summary": "Удаление оффера",
+                "operationId": "deleteOffer",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/job-applications/{id}": {
+            "get": {
+                "tags": [
+                    "Job Application Controller"
+                ],
+                "summary": "Получение отклика по ID",
+                "operationId": "getJobApplication",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/JobApplicationDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Job Application Controller"
+                ],
+                "summary": "Обновление отклика",
+                "operationId": "updateJobApplication",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/JobApplicationDto"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/JobApplicationDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Job Application Controller"
+                ],
+                "summary": "Удаление отклика",
+                "operationId": "deleteJobApplication",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/vacancies": {
+            "get": {
+                "tags": [
+                    "Vacancy Controller"
+                ],
+                "summary": "Получение списка всех вакансий",
+                "operationId": "getAllVacancies",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/VacancyDto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Vacancy Controller"
+                ],
+                "summary": "Создание новой вакансии",
+                "operationId": "createVacancy",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VacancyDto"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VacancyDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/resumes": {
+            "get": {
+                "tags": [
+                    "Resume Controller"
+                ],
+                "summary": "Получение списка всех резюме",
+                "operationId": "getAllResumes",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ResumeDto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Resume Controller"
+                ],
+                "summary": "Создание нового резюме",
+                "operationId": "createResume",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ResumeDto"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResumeDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/offers": {
+            "get": {
+                "tags": [
+                    "Offer Controller"
+                ],
+                "summary": "Получение списка всех офферов",
+                "operationId": "getAllOffers",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/OfferDto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Offer Controller"
+                ],
+                "summary": "Создание нового оффера",
+                "operationId": "createOffer",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/OfferDto"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OfferDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/job-applications": {
+            "get": {
+                "tags": [
+                    "Job Application Controller"
+                ],
+                "summary": "Получение списка всех откликов",
+                "operationId": "getAllJobApplications",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/JobApplicationDto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Job Application Controller"
+                ],
+                "summary": "Создание нового отклика",
+                "operationId": "createJobApplication",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/JobApplicationDto"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/JobApplicationDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth/register": {
+            "post": {
+                "tags": [
+                    "auth-controller"
+                ],
+                "operationId": "register",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserRegisterDto"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "auth-controller"
+                ],
+                "operationId": "login",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserLoginDto"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "VacancyDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "description": "ID вакансии",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "Название вакансии",
+                        "example": "Java Developer"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Описание вакансии",
+                        "example": "Looking for experienced Java developer"
+                    },
+                    "requirements": {
+                        "type": "string",
+                        "description": "Требования к кандидату",
+                        "example": "Java, Spring, PostgreSQL"
+                    },
+                    "company": {
+                        "type": "string",
+                        "description": "Название компании",
+                        "example": "Tech Company"
+                    },
+                    "responsibilities": {
+                        "type": "string",
+                        "description": "Обязанности",
+                        "example": "Development of backend services"
+                    },
+                    "skills": {
+                        "type": "string",
+                        "description": "Необходимые навыки",
+                        "example": "Java, Spring Boot, REST API"
+                    },
+                    "salaryFrom": {
+                        "type": "integer",
+                        "description": "Минимальная зарплата",
+                        "format": "int32",
+                        "example": 100000
+                    },
+                    "salaryTo": {
+                        "type": "integer",
+                        "description": "Максимальная зарплата",
+                        "format": "int32",
+                        "example": 200000
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "Местоположение",
+                        "example": "Moscow"
+                    },
+                    "source": {
+                        "type": "string",
+                        "description": "Источник вакансии",
+                        "example": "hh.ru"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Дата создания вакансии",
+                        "format": "date-time"
+                    },
+                    "currency": {
+                        "type": "string",
+                        "description": "Валюта",
+                        "example": "RUB"
+                    },
+                    "experience": {
+                        "type": "string",
+                        "description": "Опыт",
+                        "example": "3-5 лет"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "URL вакансии",
+                        "example": "https://hh.ru/vacancy/123"
+                    },
+                    "originalId": {
+                        "type": "string",
+                        "description": "Оригинальный ID",
+                        "example": "hh-123456"
+                    }
+                },
+                "description": "DTO для вакансии"
+            },
+            "ResumeDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "description": "ID резюме",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "fullName": {
+                        "type": "string",
+                        "description": "Полное имя кандидата",
+                        "example": "Иванов Иван Иванович"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "Email кандидата",
+                        "example": "ivanov@example.com"
+                    },
+                    "phone": {
+                        "type": "string",
+                        "description": "Телефон кандидата",
+                        "example": "+7 (999) 123-45-67"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Описание кандидата",
+                        "example": "Опытный Java разработчик"
+                    },
+                    "language": {
+                        "type": "string",
+                        "description": "Язык программирования",
+                        "example": "Java"
+                    },
+                    "birthDate": {
+                        "type": "string",
+                        "description": "Дата рождения",
+                        "format": "date",
+                        "example": "1990-01-01"
+                    },
+                    "framework": {
+                        "type": "string",
+                        "description": "Фреймворк",
+                        "example": "Spring Boot"
+                    },
+                    "education": {
+                        "type": "string",
+                        "description": "Образование",
+                        "example": "Высшее техническое"
+                    },
+                    "experience": {
+                        "type": "string",
+                        "description": "Опыт работы",
+                        "example": "5 лет разработки на Java"
+                    },
+                    "skills": {
+                        "type": "string",
+                        "description": "Навыки",
+                        "example": "Java, Spring, SQL"
+                    },
+                    "pdfFile": {
+                        "type": "string",
+                        "description": "PDF файл резюме в формате base64"
+                    },
+                    "source": {
+                        "type": "string",
+                        "description": "Источник резюме",
+                        "example": "hh.ru"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Дата создания резюме",
+                        "format": "date-time"
+                    }
+                },
+                "description": "DTO для резюме"
+            },
+            "OfferDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "description": "ID оффера",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "applicationId": {
+                        "type": "integer",
+                        "description": "ID заявки",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "offerText": {
+                        "type": "string",
+                        "description": "Текст оффера",
+                        "example": "Предлагаем вам должность Java Developer"
+                    },
+                    "pdfFilePath": {
+                        "type": "string",
+                        "description": "Путь к PDF файлу оффера",
+                        "example": "/offers/offer_1.pdf"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Дата создания оффера",
+                        "format": "date-time"
+                    }
+                },
+                "description": "DTO для оффера"
+            },
+            "JobApplicationDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "description": "ID отклика",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "resumeId": {
+                        "type": "integer",
+                        "description": "ID резюме",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "vacancyId": {
+                        "type": "integer",
+                        "description": "ID вакансии",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Статус отклика",
+                        "example": "new"
+                    },
+                    "matchScore": {
+                        "type": "number",
+                        "description": "Процент соответствия",
+                        "format": "float",
+                        "example": 85.5
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Дата создания отклика",
+                        "format": "date-time"
+                    }
+                },
+                "description": "DTO для отклика на вакансию"
+            },
+            "UserRegisterDto": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UserDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "username": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UserLoginDto": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
