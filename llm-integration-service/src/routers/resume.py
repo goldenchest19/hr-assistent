@@ -2,13 +2,11 @@ import re
 import uuid
 
 from fastapi import APIRouter, HTTPException, File, UploadFile, Form, Body
-from pydantic import BaseModel
-from typing import List, Dict, Any
 
 from src.schemas import MatchVacancyResponse, MatchVacancyRequest
 from src.services.normalizer import ResumeNormalizer
-from src.utils.pdf_extractor import PDFExtractor
 from src.services.vacancy_generator import call_deepseek_api
+from src.utils.pdf_extractor import PDFExtractor
 
 # Инициализация сервисов
 resume_normalizer = ResumeNormalizer()
@@ -70,11 +68,9 @@ async def upload_resume(
         raise HTTPException(status_code=500, detail=f"Ошибка при обработке файла: {str(e)}")
 
 
-
-
 @resume_router.post("/match-vacancies", response_model=MatchVacancyResponse, tags=["Резюме"])
 async def match_vacancies(
-    request: MatchVacancyRequest = Body(...)
+        request: MatchVacancyRequest = Body(...)
 ):
     resume = request.resume
     # Подсчет общего опыта (в годах)

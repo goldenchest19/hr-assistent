@@ -29,22 +29,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Определение пути к статическим файлам
-static_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static")
-
-# Монтирование статических файлов
-app.mount("/static", StaticFiles(directory=static_dir), name="static")
-
-
-# Корневой маршрут для отображения интерфейса
-@app.get("/", tags=["Система"])
-def read_root():
-    """
-    Корневой эндпоинт, отображающий пользовательский интерфейс
-    """
-    return FileResponse(os.path.join(static_dir, "index.html"))
-
-
 # Маршрут с информацией о сервисе
 @app.get("/info", tags=["Система"])
 def service_info():
